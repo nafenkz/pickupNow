@@ -14,9 +14,7 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) {
     var camel = new Camel(req.body);
     camel.save(function(err) {
-        if (err) { 
-            return next(err); 
-        }
+        if (err) { return next(err); }
         res.status(201).json(camel);
     });
 });
@@ -25,9 +23,7 @@ router.post('/', function(req, res, next) {
 router.get('/:id', function(req, res, next) {
     var id = req.params.id;
     Camel.findById(id, function(err, camel) {
-        if (err) { 
-            return next(err); 
-        }
+        if (err) { return next(err); }
         if (camel === null) {
             return res.status(404).json({'message': 'Camel not found'});
         }
